@@ -9,13 +9,18 @@ RUN ["/usr/bin/apt-get", "clean"]
 # FROM base AS clean
 # RUN ["/bin/rm", "-rf", "/var/lib/apt/lists"]
 
+ARG USER
 FROM base AS user
-COPY bashrc /tmp/bashrc
 ARG USER
 ENV USER=$USER
 RUN useradd -ms /bin/bash $USER
+# COPY --chown=$USER:$USER bashrc /tmp/ - TODO: https://github.com/moby/moby/issues/35018
+COPY bashrc /tmp/
+COPY inputrc /tmp/
 RUN cat /tmp/bashrc >>/home/$USER/.bashrc
+RUN cat /tmp/inputrc >>/home/$USER/.inputrc
 RUN rm /tmp/bashrc
+RUN rm /tmp/inputrc
 
 FROM user
 ARG USER
