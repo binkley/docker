@@ -9,5 +9,10 @@ RUN dpkg -l \
 RUN ["/usr/bin/apt-get", "install", "--yes", "man-db"]
 RUN ["/bin/rm", "-rf", "/var/lib/apt/lists"]
 
-FROM man-pages
+FROM man-pages AS aptitude
+RUN ["/usr/bin/apt-get", "update"]
+RUN ["/usr/bin/apt-get", "install", "--yes", "libxss1"]
+RUN ["/usr/bin/apt-get", "install", "--yes", "aptitude"]
+
+FROM aptitude
 CMD ["/bin/bash", "-il"]
