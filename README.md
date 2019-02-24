@@ -9,6 +9,10 @@ height="20%" width="20%"/></a>
 
 Custom docker images
 
+## Images
+
+* [ubuntu-local](ubuntu-local/)
+
 ## Using
 
 Each image's `Makefile` provides a **run** target, the default, which
@@ -31,6 +35,12 @@ make build
 To see what really happens, even on previously built images, consider the
 **noisy-rebuild** target, which is slow and noisy.
 
-## Images
+## Undoing
 
-* [ubuntu-local](ubuntu-local/)
+Each image's `Makefile` provides a **clean** target, to remove the installed
+image:
+
+```sh
+cd _image name_
+make clean
+```
