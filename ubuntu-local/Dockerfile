@@ -2,7 +2,7 @@ FROM ubuntu:devel AS base
 RUN { echo y; echo y; } | /usr/local/sbin/unminimize
 RUN ["/usr/bin/apt-get", "dist-upgrade"]
 RUN ["/usr/bin/apt-get", "install", "--yes", \
-    "man-db", "libxss1", "aptitude", "git"]
+    "man-db", "libxss1", "aptitude", "git", "sudo"]
 RUN ["/usr/bin/apt-get", "clean"]
 
 # Leave the apt caches, so that "search" works
