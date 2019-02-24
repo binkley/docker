@@ -1,5 +1,6 @@
 FROM ubuntu:devel AS base
 RUN { echo y; echo y; } | /usr/local/sbin/unminimize
+RUN ["/usr/bin/apt-get", "dist-upgrade"]
 RUN dpkg -l \
     | grep '^ii' \
     | cut -d ' ' -f3 \
