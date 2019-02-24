@@ -12,8 +12,12 @@ FROM man-pages AS aptitude
 RUN ["/usr/bin/apt-get", "install", "--yes", "libxss1"]
 RUN ["/usr/bin/apt-get", "install", "--yes", "aptitude"]
 
-FROM aptitude AS clean
-RUN ["/bin/rm", "-rf", "/var/lib/apt/lists"]
+FROM aptitude AS git
+RUN ["/usr/bin/apt-get", "install", "--yes", "git"]
 
-FROM clean
+# Leave the apt caches, so that "search" works
+# FROM git AS clean
+# RUN ["/bin/rm", "-rf", "/var/lib/apt/lists"]
+
+FROM git
 CMD ["/bin/bash", "-il"]
