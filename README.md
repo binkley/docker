@@ -2,13 +2,23 @@
 
 Custom docker images
 
-## Building, using
+## Using
 
-The general pattern is:
+Each image's `Makefile` provides a **run** target, the default, which
+[_builds_](#building), and then opens a shell in that image:
 
 ```sh
 cd _image name_
 make
+```
+
+## Building
+
+Each image's `Makefile` provides a **build** target:
+
+```sh
+cd _image name_
+make build
 ```
 
 ## Images
