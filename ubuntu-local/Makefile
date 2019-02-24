@@ -1,5 +1,7 @@
+IMAGE := $(notdir $(patsubst %/,%,$(dir $(realpath $(firstword $(MAKEFILE_LIST))))))
+
 run: build
-	docker run -it --rm ubuntu-local /bin/bash
+	@docker run -it --rm $(IMAGE)
 
 build:
-	docker build -qt ubuntu-local .
+	@docker build -qt $(IMAGE) .
