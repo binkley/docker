@@ -1,5 +1,5 @@
 <img src="https://random-octodex.herokuapp.com/random" alt="Octodex"
-align="right"/>
+align="right" height="20%" width="20%"/>
 
 # Docker
 
