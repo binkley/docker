@@ -13,10 +13,9 @@ ARG USER
 FROM base AS user
 ARG USER
 ENV USER=$USER
+COPY bashrc /tmp/bashrc
+COPY inputrc /tmp/inputrc
 RUN useradd -ms /bin/bash $USER
-# COPY --chown=$USER:$USER bashrc /tmp/ - TODO: https://github.com/moby/moby/issues/35018
-COPY bashrc /tmp/
-COPY inputrc /tmp/
 RUN cat /tmp/bashrc >>/home/$USER/.bashrc
 RUN cat /tmp/inputrc >>/home/$USER/.inputrc
 RUN rm /tmp/bashrc

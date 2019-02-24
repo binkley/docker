@@ -4,10 +4,14 @@ run: build
 	@docker run -it --rm $(IMAGE)
 
 build:
-	@docker build --build-arg USER -qt $(IMAGE) . >/dev/null
+	@docker build \
+		--build-arg USER \
+		-qt $(IMAGE) . >/dev/null
 
 noisy-rebuild:
-	@docker build --build-arg USER --no-cache -t $(IMAGE) .
+	@docker build \
+		--build-arg USER \
+		--no-cache -t $(IMAGE) .
 
 .PHONY: clean
 clean:
