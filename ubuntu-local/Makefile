@@ -4,4 +4,4 @@ run: build
 	@docker run -it --rm $(IMAGE)
 
 build:
-	@docker build -qt $(IMAGE) .
+	@docker build -qt $(IMAGE) . >/dev/null
