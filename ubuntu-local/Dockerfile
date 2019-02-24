@@ -14,10 +14,7 @@ ARG USER
 RUN useradd -ms /bin/bash $USER
 
 FROM user
-ENV USER=$USER
-RUN echo $USER
-RUN id
+ARG USER
 USER $USER
-RUN id
 WORKDIR /home/$USER
 CMD ["/bin/bash", "-il"]
