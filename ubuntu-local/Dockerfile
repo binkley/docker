@@ -1,5 +1,6 @@
 FROM ubuntu:disco AS base
 RUN ["/usr/bin/apt-get", "update"]
+RUN ["/usr/bin/apt-get", "--yes", "upgrade"]
 RUN ["/bin/rm", "/etc/dpkg/dpkg.cfg.d/excludes"]
 RUN dpkg -l \
     | grep '^ii' \
