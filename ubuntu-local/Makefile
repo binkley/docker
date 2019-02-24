@@ -5,3 +5,7 @@ run: build
 
 build:
 	@docker build -qt $(IMAGE) . >/dev/null
+
+.PHONY: clean
+clean:
+	@docker rmi $(IMAGE) >/dev/null 2>&1 || true
