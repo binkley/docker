@@ -7,7 +7,7 @@ RUN dpkg -l \
     | cut -d ' ' -f3 \
     | xargs apt-get install --reinstall --yes
 RUN ["/usr/bin/apt-get", "install", "--yes", "man-db"]
-RUN echo y | unminimize
+RUN echo y | unminimize >/dev/null
 RUN ["/bin/rm", "-rf", "/var/lib/apt/lists"]
 
 CMD ["/bin/bash", "-il"]
