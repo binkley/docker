@@ -6,6 +6,9 @@ run: build
 build:
 	@docker build -qt $(IMAGE) . >/dev/null
 
+noisy-build:
+	@docker build -t $(IMAGE) .
+
 .PHONY: clean
 clean:
 	@docker rmi $(IMAGE) >/dev/null 2>&1 || true
