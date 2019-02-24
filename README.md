@@ -1,7 +1,9 @@
-<img src="https://www.docker.com/sites/default/files/social/docker_facebook_share.png"
-alt="Docker" align="right" height="20%" width="20%"/>
-<img src="https://random-octodex.herokuapp.com/random" alt="Octodex"
-align="right" height="20%" width="20%"/>
+<a href="https://www.docker.com/" alt="Docker"><img
+src="https://www.docker.com/sites/default/files/social/docker_facebook_share.png"
+alt="Docker" align="right" height="20%" width="20%"/></a>
+<a href="https://github.com/" alt="GitHub"><img
+src="https://random-octodex.herokuapp.com/random" alt="Octodex" align="right"
+height="20%" width="20%"/></a>
 
 # Docker
 
