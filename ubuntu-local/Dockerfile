@@ -10,8 +10,12 @@ RUN ["/usr/bin/apt-get", "clean"]
 # RUN ["/bin/rm", "-rf", "/var/lib/apt/lists"]
 
 FROM base AS user
+COPY bashrc /tmp/bashrc
 ARG USER
+ENV USER=$USER
 RUN useradd -ms /bin/bash $USER
+RUN cat /tmp/bashrc >>/home/$USER/.bashrc
+RUN rm /tmp/bashrc
 
 FROM user
 ARG USER

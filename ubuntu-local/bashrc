@@ -1,0 +1,3 @@
+
+# Added by Docker
+shopt -s globstar
