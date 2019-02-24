@@ -1,4 +1,4 @@
-FROM ubuntu:18.10 AS base
+FROM ubuntu:disco AS base
 RUN ["/usr/bin/apt-get", "update"]
 RUN ["/bin/rm", "/etc/dpkg/dpkg.cfg.d/excludes"]
 RUN dpkg -l \
