@@ -21,6 +21,9 @@ cd _image name_
 make build
 ```
 
+To see what really happens, even on previously built images, consider the
+**noisy-rebuild** target, which is slow and noisy.
+
 ## Images
 
 * [ubuntu-local](ubuntu-local/)

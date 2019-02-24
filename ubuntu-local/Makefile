@@ -6,8 +6,8 @@ run: build
 build:
 	@docker build -qt $(IMAGE) . >/dev/null
 
-noisy-build:
-	@docker build -t $(IMAGE) .
+noisy-rebuild:
+	@docker build --no-cache -t $(IMAGE) .
 
 .PHONY: clean
 clean:
