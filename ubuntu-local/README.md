@@ -1,3 +1,8 @@
+<a href="https://www.ubuntu.com/"
+title="The leading operating system for PCs, IoT devices, servers and the cloud | Ubuntu">
+<img src="https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png"
+align="right" width="20%" height="20%" alt="Ubuntu"/></a>
+
 # Unbuntu local
 
 A local Ubuntu BASH command line
