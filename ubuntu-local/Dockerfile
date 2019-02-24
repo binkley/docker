@@ -1,4 +1,4 @@
-FROM ubuntu:disco AS base
+FROM ubuntu:devel AS base
 RUN { echo y; echo y; } | /usr/local/sbin/unminimize
 
 FROM base AS man-pages
