@@ -3,7 +3,7 @@ IMAGE := $(notdir $(patsubst %/,%,$(dir $(realpath $(firstword $(MAKEFILE_LIST))
 run: build
 	@docker run -it -e TZ=$(shell ./guess-timezone) --rm $(IMAGE)
 
-build: gitconfig
+build: Dockerfile bash_aliases bashrc guess-timezone gitconfig
 	@docker build \
 		--build-arg USER \
 		-qt $(IMAGE) . >/dev/null
