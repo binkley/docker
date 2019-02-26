@@ -19,6 +19,9 @@ RUN cat /home/$USER/bash_aliases >>/home/$USER/.bash_aliases \
 COPY bashrc /home/$USER/bashrc
 RUN cat /home/$USER/bashrc >>/home/$USER/.bashrc \
     && rm /home/$USER/bashrc
+COPY gitconfig /home/$USER/gitconfig
+RUN cat /home/$USER/gitconfig >>/home/$USER/.gitconfig \
+    && rm /home/$USER/gitconfig
 COPY inputrc /home/$USER/inputrc
 RUN cat /home/$USER/inputrc >>/home/$USER/.inputrc \
     && rm /home/$USER/inputrc

@@ -3,15 +3,21 @@ IMAGE := $(notdir $(patsubst %/,%,$(dir $(realpath $(firstword $(MAKEFILE_LIST))
 run: build
 	@docker run -it --rm $(IMAGE)
 
-build:
+build: gitconfig
 	@docker build \
 		--build-arg USER \
 		-qt $(IMAGE) . >/dev/null
 
-noisy-rebuild:
+noisy-rebuild: gitconfig
 	@docker build \
 		--build-arg USER \
 		--no-cache -t $(IMAGE) .
+
+.INTERMEDIATE: gitconfig
+gitconfig: pre-gitconfig
+	@cp pre-gitconfig $@
+	@echo "    name = $(shell git config --global user.name)" >>$@
+	@echo "    email = $(shell git config --global user.email)" >>$@
 
 .PHONY: clean
 clean:

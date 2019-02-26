@@ -1,0 +1,18 @@
+[alias]
+    br = branch
+    ci = commit
+    co = checkout
+    di = diff
+    st = status
+[color]
+    ui = true
+[fetch]
+    prune = true
+[pull]
+    rebase = true
+[push]
+    default = simple
+[rebase]
+    autostash = true
+    abbreviateCommands = true
+[user]
