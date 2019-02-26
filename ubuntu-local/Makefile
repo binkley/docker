@@ -5,15 +5,18 @@ run: build
 	-e TZ=$(shell ./guess-timezone) \
 	-it --rm $(IMAGE)
 
-build: Dockerfile bash_aliases bashrc guess-timezone gitconfig
+build: pull Dockerfile bash_aliases bashrc guess-timezone gitconfig
 	@docker build \
 		--build-arg USER \
 		-qt $(IMAGE) . >/dev/null
 
-noisy-rebuild: gitconfig
+noisy-rebuild: pull gitconfig
 	@docker build \
 		--build-arg USER \
 		--no-cache -t $(IMAGE) .
+
+pull:
+	@docker pull ubuntu:devel
 
 .INTERMEDIATE: gitconfig
 gitconfig: pre-gitconfig
