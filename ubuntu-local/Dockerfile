@@ -4,7 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN yes | /usr/local/sbin/unminimize \
     && /usr/bin/apt-get dist-upgrade \
     && /usr/bin/apt-get install --yes \
-    man-db libxss1 aptitude git sudo tzdata \
+    man-db libxss1 aptitude sudo locales tzdata \
+    git less vim \
     && /usr/bin/apt-get clean
 
 # Leave the apt caches, so that "search" works
