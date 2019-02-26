@@ -1,6 +1,6 @@
 FROM ubuntu:devel AS base
-RUN yes | /usr/local/sbin/unminimize
-RUN /usr/bin/apt-get dist-upgrade \
+RUN yes | /usr/local/sbin/unminimize \
+    && /usr/bin/apt-get dist-upgrade \
     && /usr/bin/apt-get install --yes man-db libxss1 aptitude git sudo \
     && /usr/bin/apt-get clean
 
