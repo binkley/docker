@@ -2,16 +2,19 @@ IMAGE := $(notdir $(patsubst %/,%,$(dir $(realpath $(firstword $(MAKEFILE_LIST))
 
 run: build
 	@docker run \
+	-e LANG \
 	-e TZ=$(shell ./guess-timezone) \
 	-it --rm $(IMAGE)
 
 build: pull Dockerfile bash_aliases bashrc guess-timezone gitconfig
 	@docker build \
+		--build-arg LANG \
 		--build-arg USER \
 		-qt $(IMAGE) . >/dev/null
 
 noisy-rebuild: pull gitconfig
 	@docker build \
+		--build-arg LANG \
 		--build-arg USER \
 		--no-cache -t $(IMAGE) .
 

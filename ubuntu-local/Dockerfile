@@ -1,4 +1,6 @@
 FROM ubuntu:devel AS base
+ARG LANG
+ENV LANG=$LANG
 # The DEBIAN_FRONTEND env var setting keeps tzdata from prompting on install
 ENV DEBIAN_FRONTEND=noninteractive
 RUN yes | /usr/local/sbin/unminimize \
@@ -7,6 +9,8 @@ RUN yes | /usr/local/sbin/unminimize \
     man-db libxss1 aptitude sudo locales tzdata \
     git less vim \
     && /usr/bin/apt-get clean
+# TODO: How to do this dynamically, at run, not build
+RUN locale-gen $LANG
 
 # Leave the apt caches, so that "search" works
 # FROM base AS clean
