@@ -1,4 +1,5 @@
 FROM ubuntu:devel AS base
+# The DEBIAN_FRONTEND env var setting keeps tzdata from prompting on install
 ENV DEBIAN_FRONTEND=noninteractive
 RUN yes | /usr/local/sbin/unminimize \
     && /usr/bin/apt-get dist-upgrade \
@@ -13,7 +14,9 @@ RUN yes | /usr/local/sbin/unminimize \
 FROM base AS user
 ARG USER
 ENV USER=$USER
-RUN useradd -ms /bin/bash $USER
+RUN useradd -G sudo -ms /bin/bash $USER \
+    && echo "$USER ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/$USER \
+    && chmod ug=r,o= /etc/sudoers.d/$USER
 USER $USER:$USER
 COPY bash_aliases /home/$USER/bash_aliases
 RUN cat /home/$USER/bash_aliases >>/home/$USER/.bash_aliases \
