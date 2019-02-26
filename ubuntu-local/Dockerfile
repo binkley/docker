@@ -12,12 +12,19 @@ FROM base AS user
 ARG USER
 ENV USER=$USER
 RUN useradd -ms /bin/bash $USER
-COPY bashrc /home/$USER/.bashrc
-COPY inputrc /home/$USER/.inputrc
-RUN chown $USER:$USER /home/$USER/.bashrc /home/$USER/.inputrc
+USER $USER:$USER
+COPY bash_aliases /home/$USER/bash_aliases
+RUN cat /home/$USER/bash_aliases >>/home/$USER/.bash_aliases \
+    && rm /home/$USER/bash_aliases
+COPY bashrc /home/$USER/bashrc
+RUN cat /home/$USER/bashrc >>/home/$USER/.bashrc \
+    && rm /home/$USER/bashrc
+COPY inputrc /home/$USER/inputrc
+RUN cat /home/$USER/inputrc >>/home/$USER/.inputrc \
+    && rm /home/$USER/inputrc
 
 FROM user
 ARG USER
-USER $USER
+USER $USER:$USER
 WORKDIR /home/$USER
 CMD ["/bin/bash", "-il"]
