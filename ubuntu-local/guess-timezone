@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+if [[ -f /etc/timezone ]]
+then
+    cat /etc/timezone
+
+elif [[ -h /etc/localtime ]]
+then
+    readlink /etc/localtime | sed 's,.*/zoneinfo/,,'
+
+else
+    echo "$0: No guess." >&2
+    exit 1
+fi

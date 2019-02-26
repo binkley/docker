@@ -1,7 +1,7 @@
 IMAGE := $(notdir $(patsubst %/,%,$(dir $(realpath $(firstword $(MAKEFILE_LIST))))))
 
 run: build
-	@docker run -it --rm $(IMAGE)
+	@docker run -it -e TZ=$(shell ./guess-timezone) --rm $(IMAGE)
 
 build: gitconfig
 	@docker build \
