@@ -11,6 +11,7 @@ Custom docker images
 
 ## Images
 
+* [bleeding-edge-java](bleeding-edge-java/)
 * [ubuntu-local](ubuntu-local/)
 
 ## Using

@@ -1,0 +1,8 @@
+
+# Here and below added by docker; see also ~/.bash_aliases
+
+shopt -s globstar
+
+export EDITOR=vim
+export LESS=-FR
+export PAGER=less

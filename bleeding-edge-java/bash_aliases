@@ -1,0 +1,8 @@
+unalias ll
+unalias la
+unalias l
+
+for x in ls dir vdir grep egrep fgrep
+do
+    alias $x="$x --color=auto"
+done
